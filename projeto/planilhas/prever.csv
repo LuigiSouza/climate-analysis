@@ -1,4 +1,4 @@
-Precipitacao,Umidade,Nebulosidade,TempMaxima,TempMinima,DiaMes,Temp1,Temp2,Temp3,Temp4,Temp5,Temp6,Vento,Periodo,Energia
+Precipitacao,Umidade,Nebulosidade,TempMaxima,TempMinima,DiaMes,Temp1,Morn,Temp3,Day,Temp5,Eve,Vento,Periodo,Energia
 0,55,9.5,28.9,20,227,27.8,28.9,28.9,28.9,27.8,25,3.0653533,Winter,
 0,48,5.2,30,20,237,26.1,27.8,28.9,28.9,30,26.1,4.02336,Winter,
 0,94,6.9,21.1,10,247,17.2,17.2,16.1,12.8,12.8,12.2,3.44221,Winter,
