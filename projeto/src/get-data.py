@@ -92,6 +92,7 @@ while calendary != finalDate:
 				output.write(",")
 			i += 1
 		output.write('\n')
+		texto.close()
 
 	diaC = diaC + 1
 
