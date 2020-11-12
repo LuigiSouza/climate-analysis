@@ -21,9 +21,11 @@ def train_machinne(file_name):
       x = x.drop('Insolacao', axis = 1)
       x = x.drop('Data', axis = 1)
       x = x.drop('Estacao', axis = 1)
-      x = x.drop('Temp1', axis = 1)
-      x = x.drop('Temp3', axis = 1)
-      x = x.drop('Temp5', axis = 1)
+
+      if "Temp1" in x:
+            x = x.drop('Temp1', axis = 1) 
+            x = x.drop('Temp3', axis = 1)
+            x = x.drop('Temp5', axis = 1)
 
       x['Periodo'] = x['Periodo'].replace('Winter', 1)
       x['Periodo'] = x['Periodo'].replace('Autumn', 2)
@@ -65,10 +67,15 @@ def train_machinne(file_name):
 
 def predict_data(model, file_name):
       # loads the dataset used in real prediction
-      x_hoje = pd.read_csv(file_name).drop('Energia', axis = 1)
-      x_hoje = x_hoje.drop('Temp1', axis = 1)
-      x_hoje = x_hoje.drop('Temp3', axis = 1)
-      x_hoje = x_hoje.drop('Temp5', axis = 1)
+      x_hoje = pd.read_csv(file_name)
+
+      if "Energia" in x_hoje:
+            x_hoje = x_hoje.drop('Energia', axis = 1)
+
+      if "Temp1" in x_hoje:
+            x_hoje = x_hoje.drop('Temp1', axis = 1) 
+            x_hoje = x_hoje.drop('Temp3', axis = 1)
+            x_hoje = x_hoje.drop('Temp5', axis = 1)
 
       x_hoje['Periodo'] = x_hoje['Periodo'].replace('Winter', 1)
       x_hoje['Periodo'] = x_hoje['Periodo'].replace('Autumn', 2)
@@ -79,24 +86,9 @@ def predict_data(model, file_name):
 
       return model.predict(x_hoje)
 
-#soma = 0
-
-#for i in range (100):
-#    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.25)
-#    modelo = DecisionTreeRegressor(max_depth=4)
-
-#    modelo.fit(x_train, y_train)
-
-#    result = modelo.score(x_test, y_test)
-
-#    soma += result
-
-# same thing but with DecisionTree algorithm
-#print("\n\DecisionTreeRegressor:", soma/100)
-
 def main():      
       data_predict = sys.argv[1]
-      data_training = "../planilhas/planilha_header.csv"
+      data_training = "planilha_header.csv"
       
       linear_model = train_machinne(data_training)
       print_result = predict_data(linear_model, data_predict)
